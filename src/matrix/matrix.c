@@ -1,7 +1,6 @@
-// typedef int Matirx4[4][4];
-
 #include <stdlib.h>
 #include <stdio.h>
+#include "matrix.h"
 
 typedef struct matrix
 {
@@ -69,11 +68,6 @@ int symmetrical(matrix_t *matrix) {
     return isSymmetrical;
 }
 
-void free_matrix(matrix_t *matrix) {
-    free(matrix->v);
-    free(matrix);
-}
-
 matrix_t *transpose(matrix_t *matrix) {
     matrix_t *new_matrix;
 
@@ -93,43 +87,17 @@ matrix_t *transpose(matrix_t *matrix) {
     return new_matrix;
 }
 
-int main() {
-    matrix_t *matrix;
-    matrix = create(3, 3);
+void reverse(matrix_t *matrix, int matrix_size) {
+    int matrixsize = matrix->lin * 2;
 
-    add(matrix, 0, 0, 1);
-    add(matrix, 0, 1, 2);
-    add(matrix, 0, 2, 3);
-    add(matrix, 1, 0, 4);
-    add(matrix, 1, 1, 5);
-    add(matrix, 1, 2, 6);
-    add(matrix, 2, 0, 7);
-    add(matrix, 2, 1, 8);
-    add(matrix, 2, 2, 9);
+    for (int i = 0; i < matrix->lin; i++) {
+        for (int j = 0; j < matrix->lin; j++) {
 
-    // 1 2 3
-    // 4 5 6
-    // 7 8 9
+        }
+    }
+} 
 
-    // 1 4 7
-    // 2 5 8
-    // 3 6 9
-
-    matrix_t *new_matrix;
-    new_matrix = transpose(matrix);
-
-    printf("%d\n", access(new_matrix, 0, 0));
-    printf("%d\n", access(new_matrix, 0, 1));
-    printf("%d\n", access(new_matrix, 0, 2));
-    printf("%d\n", access(new_matrix, 1, 0));
-    printf("%d\n", access(new_matrix, 1, 1));
-    printf("%d\n", access(new_matrix, 1, 2));
-    printf("%d\n", access(new_matrix, 2, 0));
-    printf("%d\n", access(new_matrix, 2, 1));
-    printf("%d\n", access(new_matrix, 2, 2));
-
-    free_matrix(matrix);
-    free_matrix(new_matrix);
-
-    return 0;
+void free_matrix(matrix_t *matrix) {
+    free(matrix->v);
+    free(matrix);
 }
