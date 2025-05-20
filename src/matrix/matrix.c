@@ -87,15 +87,19 @@ matrix_t *transpose(matrix_t *matrix) {
     return new_matrix;
 }
 
-void reverse(matrix_t *matrix, int matrix_size) {
-    int matrixsize = matrix->lin * 2;
+int search(matrix_t *matrix, int length, int target) {
+    int start = 0, end = length;
 
-    for (int i = 0; i < matrix->lin; i++) {
-        for (int j = 0; j < matrix->lin; j++) {
+    while (start <= end) {
+        int middle = (start + end) / 2;
 
-        }
+        if (target == matrix->v[middle]) return middle;
+        else if (target > matrix->v[middle]) start = middle + 1;
+        else end = middle - 1;
     }
-} 
+
+    return -1;
+}
 
 void free_matrix(matrix_t *matrix) {
     free(matrix->v);

@@ -46,5 +46,9 @@ int main() {
 
     // printf("%d\n", m[0][4]);
 
+    printf("%d\n", search(matrix, 4, 4));
+
+    free_matrix(matrix);
+
     return 0;
 }

@@ -9,5 +9,6 @@ void add(matrix_t *matrix, int lin, int col, int value);
 int symmetrical(matrix_t *matrix);
 matrix_t *transpose(matrix_t *matrix);
 void free_matrix(matrix_t *matrix);
+int search(matrix_t *matrix, int length, int target);
 
 #endif
