@@ -50,3 +50,29 @@ void add(matrix_t *matrix, int lin, int col, int value) {
 
     matrix->v[lin][col] = value;
 }
+
+int search(matrix_t *matrix, int length, int target) {
+    int start = 0;
+    int end = matrix->lin - 1;
+    int row = -1;
+
+    while (start <= end) {
+        int middle = (end + start) / 2;
+
+        if (target >= matrix->v[middle][0] && target <= matrix->v[middle][matrix->col - 1]) {
+            row = middle;
+            break;
+        }
+
+        if (target > matrix->v[middle][0]) start = middle + 1;
+        else if (target < matrix->v[middle][0]) end = middle - 1;
+    }
+
+    if (row != -1) {
+        for (int i = 0; i < matrix->col; i++) {
+            if (target == matrix->v[row][i]) return i;
+        }
+    }
+
+    return -1;
+}

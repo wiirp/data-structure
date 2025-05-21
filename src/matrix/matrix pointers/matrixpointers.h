@@ -7,5 +7,6 @@ matrix_t *create(int lin, int col);
 void free_matrix(matrix_t *matrix);
 int access(matrix_t *matrix, int lin, int col);
 void add(matrix_t *matrix, int lin, int col, int value);
+int search(matrix_t *matrix, int length, int target);
 
 #endif
