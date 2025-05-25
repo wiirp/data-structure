@@ -45,7 +45,7 @@ void add(matrix_t *matrix, int lin, int col, int value) {
     matrix->v[k] = value;
 }
 
-int symmetrical(matrix_t *matrix) {
+int is_symmetrical(matrix_t *matrix) {
     int isSymmetrical = 1;
     int j = 3;
 
