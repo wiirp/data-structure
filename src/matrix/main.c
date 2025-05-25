@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "matrix.h"
 
 /* test only */
@@ -47,6 +48,8 @@ int main() {
     // printf("%d\n", m[0][4]);
 
     printf("%d\n", search(matrix, 4, 4));
+    
+    printf("%d\n", is_square(matrix));
 
     free_matrix(matrix);
 

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "matrix.h"
 
 typedef struct matrix
@@ -45,7 +46,7 @@ void add(matrix_t *matrix, int lin, int col, int value) {
 }
 
 int symmetrical(matrix_t *matrix) {
-    int isSymmetrical = 0;
+    int isSymmetrical = 1;
     int j = 3;
 
     if (matrix->col != matrix->lin) {
@@ -58,7 +59,7 @@ int symmetrical(matrix_t *matrix) {
         int temp2 = matrix->v[j];
 
         if (temp != temp2) {
-            isSymmetrical = 1;
+            isSymmetrical = 0;
             break;
         }
 
@@ -104,4 +105,10 @@ int search(matrix_t *matrix, int length, int target) {
 void free_matrix(matrix_t *matrix) {
     free(matrix->v);
     free(matrix);
+}
+
+int is_square(matrix_t *matrix) {
+    if (matrix->col == matrix->lin) return 1;
+
+    return 0;
 }
