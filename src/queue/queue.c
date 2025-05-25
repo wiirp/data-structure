@@ -37,3 +37,8 @@ void getAll(queue_t *queue) {
         printf("%d\n", queue->data[i]);
     }
 }
+
+void free_queue(queue_t *queue) {
+    free(queue->data);
+    free(queue);
+}

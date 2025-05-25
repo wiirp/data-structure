@@ -14,10 +14,13 @@ int main(int argc, char *argv[]) {
     getAll(queue);
 
     pop(queue);
+    pop(queue);
 
     printf("\n");
 
     getAll(queue);
+
+    free_queue(queue);
 
     return 0;
 }
