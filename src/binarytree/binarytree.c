@@ -22,7 +22,7 @@ void insert(tree_t *tree, int value) {
     node->left = NULL;
     node->right = NULL;    
 
-    if (isEmpty(tree) == 0) tree->root = node;
+    if (isEmpty(tree) == 1) tree->root = node;
     else {
         node_t *current = tree->root;
         node_t *previous;
@@ -57,7 +57,7 @@ void print_tree(node_t *node) {
 }
 
 int search(tree_t *tree, int value) {
-    if (isEmpty(tree) == 0) return -1;
+    if (isEmpty(tree) == 1) return -1;
 
     node_t *current = tree->root;
 
@@ -70,6 +70,6 @@ int search(tree_t *tree, int value) {
 }
 
 int isEmpty(tree_t *tree) {
-    if (tree->root == NULL) return 0;
-    else return 1;
+    if (tree->root == NULL) return 1;
+    else return 0;
 }
