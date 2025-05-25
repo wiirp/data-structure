@@ -11,6 +11,8 @@ stack_t *init() {
     stack_t *stack;
     stack = malloc(sizeof(stack_t));
 
+    if (stack == NULL) exit(EXIT_FAILURE);
+
     stack->top = 0;
     return stack;
 }
@@ -35,5 +37,9 @@ void getAll(stack_t *stack) {
     for (int i = 0; i < stack->top; i++) {
         printf("%d\n", stack->data[i]);
     }
+}
 
+void free_stack(stack_t *stack) {
+    free(stack->data);
+    free(stack);
 }

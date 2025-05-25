@@ -16,10 +16,12 @@ int main() {
     getAll(stack);
 
     pop(stack);
-
+    
     printf("\n");
-
+    
     getAll(stack);
+
+    free_stack(stack);
 
     return 0;
 }

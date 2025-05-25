@@ -10,5 +10,6 @@ void push(stack_t *stack, int value);
 void pop(stack_t *stack);
 int peek(stack_t *stack);
 void getAll(stack_t *stack);
+void free_stack(stack_t *stack);
 
 #endif
