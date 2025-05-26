@@ -112,3 +112,10 @@ int is_square(matrix_t *matrix) {
 
     return 0;
 }
+
+void print_matrix(matrix_t *matrix) {
+
+    for (int i = 0; i < matrix->lin * matrix->col; i++) {
+        printf("%d\n", matrix->v[i]);
+    }
+}
