@@ -131,3 +131,16 @@ void replace_number(matrix_t *matrix, int lin, int col, int new_number) {
     k = lin * matrix->col + col;
     matrix->v[k] = new_number;
 }
+
+int equals(matrix_t *matrix_A, matrix_t *matrix_B) {
+
+    if (matrix_A->col != matrix_B->col || matrix_A->lin != matrix_B->lin) return 0;
+
+    if (!matrix_A || !matrix_B || !matrix_A->v || !matrix_B->v) return 0;
+
+    for (int i = 0; i < matrix_A->col * matrix_A->lin; i++) {
+        if (matrix_A->v[i] != matrix_B->v[i]) return 0;
+    }
+    
+    return 1;
+}
