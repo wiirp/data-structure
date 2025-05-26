@@ -119,3 +119,15 @@ void print_matrix(matrix_t *matrix) {
         printf("%d\n", matrix->v[i]);
     }
 }
+
+void replace_number(matrix_t *matrix, int lin, int col, int new_number) {
+     int k;
+
+    if (lin < 0 || lin >= matrix->lin || col < 0 || col >= matrix->col) {
+        printf("Error line or collum");
+        exit(EXIT_FAILURE);
+    }
+
+    k = lin * matrix->col + col;
+    matrix->v[k] = new_number;
+}

@@ -14,5 +14,6 @@ int is_square(matrix_t *matrix);
 void free_matrix(matrix_t *matrix);
 void add(matrix_t *matrix, int lin, int col, int value);
 void print_matrix(matrix_t *matrix);
+void replace_number(matrix_t *matrix, int lin, int col, int new_number);
 
 #endif
