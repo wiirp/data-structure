@@ -13,9 +13,9 @@ int main() {
     add(matrix, 1, 0, 3);
     add(matrix, 1, 1, 4);
     
-    printf("%d\n", search(matrix, 4, 3));
+    print_matrix(matrix);
 
-    free(matrix);
+    free_matrix(matrix);
 
     return 0;
 }

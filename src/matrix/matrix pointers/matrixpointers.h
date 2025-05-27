@@ -4,9 +4,12 @@
 typedef struct matrix matrix_t;
 
 matrix_t *create(int lin, int col);
-void free_matrix(matrix_t *matrix);
+
 int access(matrix_t *matrix, int lin, int col);
-void add(matrix_t *matrix, int lin, int col, int value);
 int search(matrix_t *matrix, int length, int target);
+
+void add(matrix_t *matrix, int lin, int col, int value);
+void free_matrix(matrix_t *matrix);
+void print_matrix(matrix_t *matrix);
 
 #endif
