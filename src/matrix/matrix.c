@@ -144,3 +144,31 @@ int equals(matrix_t *matrix_A, matrix_t *matrix_B) {
     
     return 1;
 }
+
+int is_identity(matrix_t *matrix) {
+    int is_identity = 1;
+
+    if (matrix->col != matrix->lin) {
+        printf("It is not possible to prove whether a non-square matrix is identity");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < matrix->lin; i++) {
+        int k = i * matrix->lin + i;
+
+        if (matrix->v[k] != 1) {
+            return 0;
+        }
+    }
+
+    for (int i = 0; i < matrix->lin; i++) {
+        for (int j = 0; j < matrix->lin; j++) {
+            if (i != j) {
+                int k = i * matrix->lin + j;
+                if (matrix->v[k] != 0) return 0;
+            }
+        }
+    }
+    
+    return 1;
+}
