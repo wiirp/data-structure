@@ -172,3 +172,27 @@ int is_identity(matrix_t *matrix) {
     
     return 1;
 }
+
+void fill_matrix_random(matrix_t *matrix, int range, unsigned int seed) {
+    srand(seed);
+
+    if (!matrix->lin || !matrix->col) {
+        printf("Null matrix");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < matrix->col * matrix->lin; i++) {
+        matrix->v[i] = rand() % range;
+    }
+}
+
+void fill_matrix(matrix_t *matrix, int number) {
+    if (!matrix->lin || !matrix->col) {
+        printf("Null matrix");
+        exit(EXIT_FAILURE);
+    }
+
+     for (int i = 0; i < matrix->col * matrix->lin; i++) {
+        matrix->v[i] = number;
+    }
+}
