@@ -196,3 +196,18 @@ void fill_matrix(matrix_t *matrix, int number) {
         matrix->v[i] = number;
     }
 }
+
+matrix_t *copy_matrix(matrix_t *matrix) {
+    matrix_t *new_matrix;
+
+    new_matrix = (matrix_t*) malloc(sizeof(matrix_t));
+    new_matrix->lin = matrix->lin;
+    new_matrix->col = matrix->col;
+    new_matrix->v = (int*) malloc(matrix->lin * matrix->col * sizeof(int*));
+
+    for (int i = 0; i < new_matrix->col * new_matrix->lin; i++) {
+        new_matrix->v[i] = matrix->v[i];
+    }
+
+    return new_matrix;
+}
