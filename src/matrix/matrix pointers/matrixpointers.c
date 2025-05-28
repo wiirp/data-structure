@@ -78,11 +78,26 @@ int search(matrix_t *matrix, int length, int target) {
 }
 
 void print_matrix(matrix_t *matrix) {
-    
+
     for (int i = 0; i < matrix->lin; i++) {
         for (int j = 0; j < matrix->lin; j++) {
             printf("%d\n", matrix->v[i][j]);
         }
     }
 
+}
+
+int equals(matrix_t *matrix_A, matrix_t *matrix_B) {
+
+    if (matrix_A->col != matrix_B->col || matrix_A->lin != matrix_B->lin) return 0;
+
+    if (!matrix_A || !matrix_B || !matrix_A->lin || !matrix_B->lin) return 0;
+
+    for (int i = 0; i < matrix_A->lin; i++) {
+        for (int j = 0; j < matrix_A->lin; j++) {
+            if (matrix_A->v[i][j] != matrix_B->v[i][j]) return 0;
+        }
+    }
+
+    return 1;
 }
