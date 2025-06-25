@@ -1,29 +1,31 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "linkedlist.h"
 
-struct node
+typedef struct node
 {
     int value;
     node_t *next;
-};
+} node_t ;
 
-struct list
+typedef struct list
 {
     node_t *head;
-};
+    node_t *last;
+    size_t size;
+} list_t ;
 
 list_t *init() {
     list_t *list;
-    list = malloc(sizeof(list_t));
+    list = (*list_t) malloc(sizeof(list_t));
 
     if (list == NULL) exit(EXIT_FAILURE);
 
     list->head = NULL;
+    list->last = NULL;
+    list->size = 0;
     return list; 
 }
 
-node_t *create_node(int value) {
+static node_t *create_node(int value) {
     node_t *new_node;
     new_node = malloc(sizeof(node_t));
 
@@ -35,10 +37,18 @@ node_t *create_node(int value) {
     return new_node;
 }
 
-void add(list_t *list, int value) {
+enum status add(list_t *list, int value) {
+    if (list == NULL) return LK_ERR_NULL_LIST;
+
+    if (list->size == MAX) return LK_ERR_MAX_LIST_LIMIT;
+
     node_t *current;
     if (list->head == NULL) {
-        list->head = create_node(value);
+        node_t *node_head = create_node(value);
+        list->head = node_head;
+        list->last = node_head;
+
+        return LK_OK;
     } else {
         current = list->head;
         while(current->next != NULL) {
@@ -46,21 +56,57 @@ void add(list_t *list, int value) {
         }
 
         current->next = create_node(value);
+        list->last = current->next;
     }
+
+    list->size = list->size + 1;
+    return LK_OK;
 }
 
-void delete(list_t *list, int value) {
-    if (list->head == NULL) exit(EXIT_FAILURE);
-
-    node_t *current = list->head;
-    node_t *previous = NULL;
-
-    while (current->value != value) {
-        
-    }
+enum status get_first(list_t *list) {
+    if (list->head == NULL) return LK_ERR_NULL_LIST;
+    
+    return LK_OK;
 }
 
-void print(list_t *list) {
+enum status get_last(list_t *list) {
+    if (list->last == NULL) return LK_ERR_NULL_LIST;
+
+    return LK_OK;
+}
+
+int get_first_value(list_t *list) {
+    if (list->head == NULL) return LK_ERR_NULL_LIST;
+
+    return list->head->value;
+}
+
+int get_last_value(list_t *list) {
+    if (list->last == NULL) return LK_ERR_NULL_LIST;
+
+    return list->last->value;
+}
+
+size_t get_size(list *list) {
+    if (list->head == NULL) return LK_ERR_NULL_LIST;
+
+    return list->size;
+}
+
+void free_all(list *list) {
+    node_t *current;
+
+    current = list->head;
+    for (int i = 0 ; i < list->size; i++) {
+        current = current->next;
+
+        free(current->next);
+    }
+
+    free(list);
+}
+
+void print_all(list_t *list) {
     node_t *current = list->head;
 
     while(current->next != NULL) {
@@ -68,4 +114,35 @@ void print(list_t *list) {
         current = current->next;
     }
     printf("%d\n", current->value); /* print the last one */
+}
+
+enum status remove_first(list_t *list) {
+    if (list->head == NULL) return LK_ERR_NULL_LIST;
+    // VERIFY(list->head, ...);
+
+    if (list->size == 1) return LK_ERR_HEAD_AS_LAST;
+
+    node_t *current = list->head;
+    list->head = current->next;
+
+    return LK_OK;
+}
+
+enum status remove_last(list_t *list) {
+    if (list->head == NULL && list->last == NULL) return LK_ERR_NULL_LIST;
+
+    if (list->size == 1 && list->head == NULL) {
+        list->head = NULL;
+        list->last = NULL;
+        list->size = 0;
+    } else list->last = NULL;
+
+    return LK_OK;
+}
+
+int get_value(list_t *list, int index) {
+    node_t *current;
+    int value = 0;
+
+    
 }
